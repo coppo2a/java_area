@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Area</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="shortcut icon" href="/connected/images/favicon.ico">
+    <link rel="stylesheet" href="/connected/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/connected/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/connected/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,400i,700,700i|Montserrat:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet">
+    <script src="/connected/js/oauth.min.js"></script>
+</head>
+<body>
+
+<section class="cover-1 text-center">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+        <div class="container">
+            <a class="navbar-brand" href="#">Area</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse pull-xs-right justify-content-end" id="navbarSupportedContent">
+                <ul class="navbar-nav mt-2 mt-md-0">
+                    <li class="nav-item active">
+                        <form action="/home/disconnect" method="post">
+                            <button type="submit" class="nav-link"
+                                style="background: none; border: none;">Déconnexion <span class="sr-only">(current)</span>
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="pop_wrong" class="alert alert-danger" style="display: none">
+        <strong>Connectez vous avec les services </strong>
+    </div>
+    <div id="wrong_autolog" class="alert alert-danger" style="display: none">
+        <strong>Vérifier votre autolog Epitech </strong>
+    </div>
+    <div id="wrong_user_instagram" class="alert alert-danger" style="display: none">
+        <strong>Vérifier votre nom Instagram </strong>
+    </div>
+    <div id="pop_connected_api" class="alert alert-success" style="display: none">
+    </div>
+    <div class="cover-container pb-5">
+        <div class="cover-inner container">
+            <h1 class="jumbotron-heading" id="welcome">Web <em>app</em> area <strong>avec des API</strong></h1>
+            <p class="lead">Pleins de tarpin bonne api, MGL.</p>
+            <div class="m-auto col-md-6">
+                <!--<button type="submit" class="btn btn-lg btn-primary pill-btn">Inscription</button>-->
+                <a href="#api_list" type="submit" class="btn btn-outline-white btn-lg mb-2 ml-2 ml-2">Voir les api</a>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!--<section class="cover-2 text-left">
+    <div class="cover-container">
+        <div class="cover-inner container">
+                <div class="row justify-center">
+                    <div class="col-lg-5 mt-5 mb-5 text-center text-lg-left">
+                        <h1 class="jumbotron-heading">Medialoot Startup UI Kit</h1>
+                        <p class="lead">A collection of coded HTML and CSS elements to help your build your startup website. Clean design, fully responsive and based on Bootstrap 4.</p>
+                        <p>
+                        <a href="#" class="btn btn-outline-success btn-lg mb-2 mr-2 ml-2 pill-btn">Buy Now</a>
+                        <a href="#" class="btn link-white mb-2 ml-2 ml-2 pill-btn">Find out more</a>
+                    </p>
+                </div>
+                <div class="col-lg-5 offset-lg-2 mt-5 mb-5 text-center">
+                    <img class="img-fluid mt-5 mb-5" src="home/images/placeholder-phone.png" >
+                </div>
+            </div>
+        </div>
+    </div>
+</section>-->
+
+<section class="features-1 text-center" id="api_list">
+    <div class="container">
+        <h2>Features</h2>
+        <div class="divider"></div>
+        <div class="row">
+            <div class="col-md-4 col-feature">
+                <div class="rounded-circle justify-center">
+                    <em class="fa fa-2x fa-paint-brush"></em>
+                </div>
+                <h4>1) Connectez vous avec les services désirés</h4>
+                <!--<p>Description de l'api</p>-->
+                <p><a class="btn btn-outline-primary mt-2" onclick="api_call('facebook');" role="button">Connectez vous avec Facebook</a></p>
+                <p><a class="btn btn-outline-primary mt-2" onclick="api_call('twitter');" role="button">Connectez vous avec Twitter</a></p>
+                <!--<p><a class="btn btn-outline-primary mt-2" onclick="api_call('youtube');" role="button">Connectez vous avec Youtube</a></p>-->
+                <p><a class="btn btn-outline-primary mt-2" onclick="api_call('dropbox');" role="button">Connectez vous avec Dropbox</a></p>
+
+                <!--<p><a class="btn btn-outline-primary mt-2" onclick="api_call('instagram');" role="button">Connectez vous avec Instagram</a></p>-->
+                <p><a class="btn btn-outline-primary mt-2" onclick="api_call('yammer');" role="button">Connectez vous avec Yammer</a></p>
+                <form method="GET" action="/home/connected/intra">
+                    <input type="text" class="form-control-custom" name="autologin" id="autologin" placeholder="auto-login : https://intra.epitech.eu/auth-xXxXxX">
+                    <input type="text" style="display: none" name="user" id="user">
+                    <button class="btn btn-outline-primary mt-2" type="submit">Envoi de l'auto-login Epitech</button>
+                </form>
+                <form method="GET" action="/home/connected/instagram">
+                    <input type="text" class="form-control-custom" name="user_instagram" id="user_instagram" placeholder="nom d'utilisateur instagram">
+                    <input type="text" style="display: none" name="user1" id="user1">
+                    <button class="btn btn-outline-primary mt-2" type="submit">Envoi de l'utilisateur instagram</button>
+                </form>
+            </div>
+            <div class="col-md-4 col-feature">
+                <div class="rounded-circle justify-center">
+                    <em class="fa fa-2x fa-desktop"></em>
+                </div>
+                <h4>2) Utiliser les modules</h4>
+                <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse cursus erat sed sem sagittis
+                    cursus.</p>-->
+                <!--<p><a class="btn btn-outline-primary mt-2" href="#" role="button">View details</a></p>-->
+                <p><a class="btn btn-outline-primary mt-2" onclick="twitter_fb();" role="button">Nouvelles photos twitter sur Facebook</a></p>
+                <p><a class="btn btn-outline-primary mt-2" onclick="intra_mail();" role="button">Envoie de mail lors de gain de crédits Epitech</a></p>
+                <p><a class="btn btn-outline-primary mt-2" onclick="intra_yammer();" role="button">Envoie de message yammer lors de gain de crédits Epitech</a></p>
+                <p><a class="btn btn-outline-primary mt-2" onclick="insta_fb();" role="button">Nouvelles photos Instagram sur Facebook</a></p>
+            </div>
+            <div class="col-md-4 col-feature">
+                <div class="rounded-circle justify-center">
+                    <em class="fa fa-2x fa-code"></em>
+                </div>
+                <h4>Uploadez vos photos sur différents services</h4>
+                <form method="POST" action="/home/connected/uploadFile" enctype="multipart/form-data">
+                    Fichier à envoyer <input type="file" name="file">
+                    <button class="btn btn-outline-primary mt-2" type="submit">Envoi du fichier</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--<section class="cta-4 text-center justify-center">
+    <div class="container">
+        <h2 class="mb-5">Download this UI Kit and use it to help your startup get started up</h2>
+        <div class="divider"></div>
+        <form class="subscribe">
+            <div class="form-group row pt-4 pb-2 m-auto col-md-8">
+                <div class="col-md-6 mb-3">
+                    <input type="text" class="form-control-custom" id="inputName" placeholder="Your Name">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <input type="email" class="form-control-custom" id="inputEmail" placeholder="Your Email">
+                </div>
+            </div>
+            <div class="row">
+                <div class="m-auto col-md-4">
+                    <button type="submit" class="btn btn-lg btn-primary pill-btn">Get Started</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section> -->
+
+<!-- GET STARTED button-->
+<!-- <section class="cta-5 text-center">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8 text-center text-lg-left">
+                <h2 class="mt-4 mb-2">Do you like what you see?</h2>
+                <p class="lead mb-3">Sign up now to save 10% on your first order.</p>
+            </div>
+            <div class="col-lg-4">
+                <button type="submit" class="btn btn-lg btn-success pill-btn mt-3">Get Started</button>
+            </div>
+        </div>
+    </div>
+</section>
+-->
+<!--<section class="contact-1">
+    <div class="container">
+        <div class="row contact-details">
+            <div class="col-sm-8 text-center text-md-left mb-4">
+                <h3>Ask us a question</h3>
+                <form class="contact-form mt-4">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <input type="text" class="form-control-custom mb-4" placeholder="Name" value="Your name">
+                        </div>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control-custom mb-4" placeholder="Email address" value="Email address">
+                        </div>
+                        <br />
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <textarea class="form-control-custom mb-4" rows="3">Your Message</textarea><br />
+                            <button type="submit" class="btn btn-primary btn-lg mb-4">Send Message</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-sm-4 text-center text-md-left">
+                <h3>Contact</h3>
+                <h4 class="pt-4">Email</h4>
+                <p>hello@startup.co</p>
+                <h4 class="pt-2">Phone</h4>
+                <p>+111 234 567 89</p>
+                <h4 class="pt-2">Address</h4>
+                <p>1 Street Name, City, Zip Code<br />
+                United States</p>
+                <ul class="social">
+                    <li><a href="#" title="Facebook" class="fa fa-facebook"></a></li>
+                    <li><a href="#" title="Twitter" class="fa fa-twitter"></a></li>
+                    <li><a href="#" title="Google+" class="fa fa-google"></a></li>
+                    <li><a href="#" title="Dribbble" class="fa fa-dribbble"></a></li>
+                    <li><a href="#" title="Instagram" class="fa fa-instagram"></a></li>
+                    <div class="clear"></div>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="contact-2">
+    <div class="container">
+        <div class="row contact-details">
+            <div class="col-sm-8 m-auto text-center">
+                <h2>Contact Us</h2>
+                <p class="lead constrain-width mt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. At aliquam rhoncus donec magna turpis, dictum sit amet tellus at, commodo elementum sapien.</p>
+                <div class="divider"></div>
+                <h4>Ask us a question</h4>
+                <form class="contact-form mt-4">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control-custom mb-4" placeholder="Name" value="Your name">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control-custom mb-4" placeholder="Email address" value="Email address">
+                        </div>
+                        <br />
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <textarea class="form-control-custom mb-4" rows="3">Your Message</textarea><br />
+                            <button type="submit" class="btn btn-primary btn-lg mb-4">Send Message</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>-->
+
+<footer class="footer-4">
+    <!--<div class="container">
+        <div class="row mb-5 text-center text-md-left">
+            <div class="col-md-3 col-lg-4 mb-3">
+                <a class="logo" href="#">Startup UI Kit</a>
+            </div>
+            <!--<div class="col-md-3 offset-lg-2 col-lg-2 pt-2">
+                <h5>Category 1</h5>
+                <ul class="nav-footer">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Our Work</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-lg-2 pt-2">
+                <h5>Category 2</h5>
+                <ul class="nav-footer">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Our Work</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-lg-2 pt-2">
+                <h5>Category 3</h5>
+                <ul class="nav-footer">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Our Work</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-center text-md-left mt-2 mb-3 pt-1">
+                <p class="copyright">Copyright &copy; Area's Team. All rights reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-right mb-4">
+                <ul class="social">
+                    <li><a href="#" title="Facebook" class="fa fa-facebook"></a></li>
+                    <li><a href="#" title="Twitter" class="fa fa-twitter"></a></li>
+                    <li><a href="#" title="Google+" class="fa fa-google"></a></li>
+                    <li><a href="#" title="Dribbble" class="fa fa-dribbble"></a></li>
+                    <li><a href="#" title="Instagram" class="fa fa-instagram"></a></li>
+                    <div class="clear"></div>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+        integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+        integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous"></script>
+<script src="/connected/bootstrap/js/bootstrap.min.js"></script>
+<script src="/connected/js/API.js"></script>
+
+<script>
+    var string = document.URL;
+    string = string.split("?");
+    var stringArray = new Array();
+    for (var i = 0; i < string.length; i++) {
+        stringArray.push(string[i]);
+    }
+    $('#welcome').text('Welcome ' + string[1]);
+    $('#user').val(string[1]);
+    $('#user1').val(string[1]);
+    console.log(string);
+    if (string[2] === "wrong"){
+        $("#pop_wrong").show();
+    }
+    if (string[2] === "wrong_autolog")
+        $("#wrong_autolog").show();
+    if (string[2] === "wrong_user_instagram")
+        $("#wrong_user_instagram").show();
+    else if (string[2] !== undefined && string[2] !== "")
+    {
+        $('#pop_connected_api').show();
+        $('<strong>Connectez avec ' + string[2] + '</strong>').appendTo('#pop_connected_api');
+    }
+</script>
+
+</body>
+</html>
